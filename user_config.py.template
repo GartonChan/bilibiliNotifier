@@ -1,0 +1,26 @@
+from datetime import datetime
+
+# SMTP server settings
+smtp_server = "smtp.gmail.com"
+smtp_port = 587
+login = "username@gmail.com"
+password = "password"
+
+# Setting of email
+dateobj = datetime.now()
+datestr = datetime.strftime(dateobj, "%Y-%m-%d")
+emailSubject = "Bilibili Posts Update ({})".format(datestr)
+sender_email = "username@gmail.com"
+receiver_email = "receiver email"
+
+# Subscriptions
+mids = []
+with open("tmp/mids.txt", "r") as f:
+    mids = f.read().split('\n')  # todo: it should not contain empty lines now
+
+# Bilibili Cookies
+cookies_str = "xxx"
+cookies = {}  # parse the string to a dict
+for kv in cookies_str.split(';'):
+    key, val = kv.strip().split('=')
+    cookies[key] = val
